@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: initpod-ta5n
+spec:
+    containers:
+        - name: app-ta5n
+          image: busybox
+          command: ["sh", "-c", "echo The app is running && sleep 3600"]
+    initContainers:
+        - name: initcontainer-ta5n
+          image: busybox
+          command:
+              [
+                  "sh",
+                  "-c",
+                  "until nslookup service-ta5n; do echo waiting for service-ta5n; sleep 2; done",
+              ]
