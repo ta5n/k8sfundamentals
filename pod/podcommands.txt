@@ -1,0 +1,210 @@
+
+   14  minikube start
+   15  kubectl version
+   16  kubectl version --output=yaml
+   17  dnf search jq
+   18  sudo dnf install jq
+   19  kubectl version --output=json | jq
+   20  sudo dnf search bat
+   21  sudo dnf install bat
+   22  kubectl version --output=json | bat
+   23  bat --help
+   24  kubectl version --output=json | bat -f
+   25  p10k configure
+   26  cd
+   27  vim ~/.p10k.zsh
+   28  . ~/.zshrc
+   29  kubectl cluster-info
+   30  kubectl get pods
+   31  kubectl get pods -A
+
+   50  minikube start
+   51  cd
+   52  kubectl
+   53  ls -al
+   54  ll
+   55  la
+   56  lla
+   57  vim ~/.zshrc
+   58  mkdir -p .local/bin
+   59  tar -xvzf /mnt/c/Users/user/Downloads/shell-tools/kubecolor_0.0.20_Linux_x86_64.tar.gz -C ~/.local/bin
+
+  487  code
+  488  cd projects
+  489  git clone git@github.com:aytitech/k8sfundamentals.git
+  490  cd k8sfundamentals
+  491  code .
+  492  kbctl cluster-info
+  493
+  502  git clone git@github.com:ta5n/k8sfundamentals.git
+  503
+  514  kbctl explain pods
+  515  kubectl explain pods
+  516  minikube start
+  517  kbctl explain pods
+  518  kbctl explain pod
+  519  kbctl explain deployment
+  520  kbctl explain serviceaccount
+
+  524  kbctl apply -f firstpod.yaml
+  525  kbctl describe pods firstpod
+  526  docker login
+  527  kbctl describe pods firstpod
+  528  kbctl apply -f firstpod.yaml
+  529  kbctl delete pods firstpod
+  530  kbctl apply -f firstpod.yaml
+  531  kbctl describe pods firstpod
+  532  kbctl delete pods firstpod
+  533  kbctl apply -f firstpod.yaml
+  534  kbctl describe pods firstpod
+  535  brave-browser http://localhost
+  536  kbctl describe pods firstpod
+
+  541  kubectl explain pods
+  542  kubebctl describe pods firstpod
+  543  kubectl describe pod firstpod
+  548  code .
+  549  kubectl describe pod firstpod
+  555  kubectl describe pod firstpod
+  556  kbctl describe pods firstpod
+
+  563  kbctl describe pods firstpod
+
+  568  kbctl describe pods firstpod
+  569  minikube stop
+  570  l
+  571  minikube start
+  572  kbctl describe pods firstpod
+  573  kbctl run secondpad --image=nginx --port=80 --labels="app=frontend" --restart=Never
+  574  kubectl describe pod *
+  575  kubectl describe pod
+  576  kbctl describe pod
+  577  kbctl get pods
+  578  kbctl run secondpad --image=nginx --port=80 --labels="app=frontend,team=developer" --restart=Never
+  579
+  688  kbctl get pods -w
+  689  kbctl apply -f podlife2.yaml
+  690  kbctl apply -f podlife3.yaml
+  691  kbctl apply -f podlife4.yaml
+  692  for i in [1..4]; kbctl delete -f podlife$i.yaml
+  693  for i in range(1..4); kbctl delete -f podlife$i.yaml
+  694  kbctl delete -f podlife1.yaml
+  695  kbctl delete -f podlife2.yaml
+  696  kbctl delete -f podlife3.yaml
+  697  kbctl delete -f podlife4.yaml
+  698  for i in {1..5}\ndo\n  echo "House $i"\ndone
+  699  for i in {1..4}\ndo\n  kbctl apply -f "podlife$i.yaml"\ndone
+  700  for i in {1..4}\ndo\n  kbctl delete -f podlife$i.yaml\ndone
+
+  862  minikube start
+  863  cd pod
+  864  kbctl get pods --watch
+  865  kbctl apply --filename podinitcontainer.yaml
+  866  kbctl delete --filename podinitcontainer.yaml
+  867  kbctl get pods --watch
+  868  cd my
+  869  l
+  870  kbctl apply --filename initcontainer-ta5n.yaml
+  871  kbctl logs --follow initpod-ta5n --container appp-ta5n
+  872  kbctl logs --follow initpod-ta5n --container app-ta5n
+  873  kbctl logs --follow initpod-ta5n --container initcontainer-ta5n
+  874  kbctl apply --filename service-ta5n.yaml
+  875  kbctl logs --follow initpod-ta5n --container initcontainer-ta5n
+  876  kbctl logs --follow initpod-ta5n --container app-ta5n
+  877  exit
+  878  kbctl delete --filename service-ta5n.yaml
+  879  kbctl delete --filename initcontainer-ta5n.yaml
+  880  kbctl get pods --watch
+  881  fg
+  882  l
+  883  export GPG_TTY=$(tty)
+  884  git commit -m "initcontainer logic"
+  885  code ~/.zshrc
+  886  l
+  887  ll
+  888  kbctl get pods --watch
+  889  kbctl apply --filename label-ta5n.yaml
+  890  l
+  891  kbctl get pods --label "app" --show-labels
+  892  kbctl get pods --labels "app" --show-labels
+  893  kbctl get pods -l "app" --show-labels
+  894  kbctl help get
+  895  kbctl get pods --selector="app" --show-labels
+  896  kbctl get pods --selector "app" --show-labels
+  897  kbctl get pods --selector "firstapp" --show-labels
+  898  kbctl get pods --selector "app=firstapp" --show-labels
+  899  kbctl apply --filename label-ta5n.yaml
+  900  kbctl get pods --selector "app=firstapp" --show-labels
+  901  kbctl get pods --selector "app=firstapp,tier=frontend" --show-labels
+  902  kbctl get pods --selector "app=firstapp, tier=frontend" --show-labels
+  903  cd repos
+  904  code k8sfundamentals
+  905  kbctl get pods --selector "app=firstapp, tier=frontend" --show-labels
+  906  minikube stop
+  907  cd repos
+  908  code k8sfundamentals
+    926  minikube start
+  927  kbctl get pods
+  928  kbctl delete --filename podlabel.yaml
+  929  cd pod
+  930  kbctl delete --filename podlabel.yaml
+  931  kbctl apply --filename ta5n-podlabel.yaml
+  932  kbctl get pods
+  933  kbctl get pods --watch
+  934* kbctl apply --filename ta5n-podlabel.yaml
+  935* kbctl delete --filename ta5n-podlabel.yaml
+  936  kbctl get pods --watch
+  937* kbctl apply --filename ta5n-podlabel.yaml
+  938  kbctl get pods --watch
+  939* kbctl delete --filename ta5n-podlabel.yaml
+  940  kbctl get pods --watch
+  941* kbctl apply --filename ta5n-podlabel.yaml
+  942  kbctl get pods --watch
+  943* kbctl get pods --selector "app" --show-labels
+  944* kbctl get pods --selector "app=f
+  945* kbctl get pods --selector "app=firstapp" --show-labels
+  946  kbctl get pods --selector "app=firstapp, tier=frontend" --show-labels
+  947  kbctl get pods --selector "app=firstapp, tier!=frontend" --show-labels
+  948  kbctl get pods --selector "app, tier=frontend" --show-labels
+  949  kbctl get pods --selector "app in (firstap)" --show-labels
+  950  kbctl get pods --selector "app in (firstapp)" --show-labels
+  951  kbctl get pods --selector "app=firstapp, app=secondapp" --show-labels
+  952  kbctl get pods --selector 'app=firstapp, app=secondapp' --show-labels
+  953  kbctl get pods --selector 'app=firstapp,app=secondapp' --show-labels
+  954  kbctl get pods --selector 'app in (firstapp, secondapp)' --show-labels
+  955  kbctl get pods --selector 'app notin (firstapp)' --show-labels
+  956  kbctl get pods --selector 'app,app notin (firstapp)' --show-labels
+  957  kbctl get pods --selector '!app' --show-labels
+  958  kbctl get pods --selector 'app in (firstapp), tier notin (frontend)' --show-labels
+  959  kbctl get pods --show-labels
+  960  kbctl label pods pod9 app-
+  961  kbctl get pods --show-labels
+  962  kbctl label pods pod9 --overwrite team=team3
+  963  kbctl get pods --show-labels
+  964  kbctl label pods --all foo=bar
+  965  kbctl get pods --show-labels
+  966  kbctl get pods --watch
+  967* kbctl get nodes --show-labels
+  968* kbctl label nodes minikube hddtype=ssd
+  969  kbctl get pods --watch
+  970* kbctl get nodes --show-labels
+  971* kbctl label nodes minikube hddtype=ssd
+  972  kbctl get pods --watch
+  973* kbctl apply --filename ta5n-podlabel.yaml
+  974* kbctl delete --filename ta5n-podlabel.yaml
+  975* kbctl apply --filename ta5n-podlabel.yaml
+  976  kbctl get pods --watch
+  977* kbctl label nodes minikube hddtype-
+  978  kbctl get pods --watch
+  979* kbctl delete --filename ta5n-podlabel.yaml
+  980  kbctl get pods --watch
+  981* kbctl apply --filename ta5n-podlabel.yaml
+  982  kbctl get pods --watch
+  983* kbctl label nodes minikube hddtype=ssd
+  984* kbctl label nodes minikube hddtype-
+  985* kbctl apply --filename ta5n-podlabel.yaml
+  986* kbctl stop pods pod11
+  987* kbctl rm pods pod11
+  988* kbctl delete pods pod11
+  989* kbctl delete --filename ta5n-podlabel.yaml
+  990  kbctl get pods --watch
