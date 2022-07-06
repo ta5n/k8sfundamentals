@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: annotationpod
+  annotations:
+    owner: "Osman Taş"
+    tasosman.com/annotate1: "this a test annotation"
+    notification-email: "tasosman@gmail.com"
+    releasedate: "03.07.2022"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  containers:
+    - name: annotationcontainer
+      image: nginx
+      ports:
+      - containerPort: 80
+      resources:
+        limits:
+          cpu: "100m"
+          memory: "128Mi"
